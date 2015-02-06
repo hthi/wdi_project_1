@@ -8,4 +8,8 @@ class PatientsController < ApplicationController
     flash[:success] = 'Patient successfully created.'
   end
 
+  def show
+    @patient = Patient.find(params[:id])
+  end
+
 end

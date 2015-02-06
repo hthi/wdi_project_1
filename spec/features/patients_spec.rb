@@ -22,4 +22,12 @@ RSpec.feature 'Managing patients' do
 
     expect(page).to have_content(/success/i)
   end
+
+  scenario 'Show a patient' do
+    patient = Patient.create!(name: 'Alexandra Parker', dob: '1972-05-18', mrn: '252-37-02', email: 'ally_p@yahoo.com')
+
+    visit "/patients/#{patient.id}"
+
+    expect((page).find('h1')).to have_content 'Alexandra Parker'
+  end
 end
