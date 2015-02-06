@@ -9,6 +9,6 @@ RSpec.feature 'Managing patients' do
     visit '/patients'
 
     expect(page).to have_content 'Patients'
-    expect(pages).to have_selector 'li', count: 3
+    expect(page).to have_selector 'li', count: 3
   end
 end
