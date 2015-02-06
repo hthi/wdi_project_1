@@ -11,4 +11,15 @@ RSpec.feature 'Managing patients' do
     expect(page).to have_content 'Patients'
     expect(page).to have_selector 'li', count: 3
   end
+
+  scenario 'Create a patient' do
+    visit '/patients/new'
+
+    fill_in 'Name', with: 'Kevin Smith'
+    fill_in 'Date of Birth', with: '1952-02-12'
+    fill_in 'Medical Record Number', with: '523-66-71'
+    fill_in 'Email', with: 'ksmith@gmail.com'
+
+    expect(page).to have_content(/success/i)
+  end
 end

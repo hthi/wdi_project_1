@@ -17,5 +17,7 @@ RSpec.describe PatientsController do
       get :index
       expect(assigns(:patients)).to eq patients
     end
+
+
   end
 end

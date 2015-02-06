@@ -1,0 +1,15 @@
+<%= form_for @patient do |f| %>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name %>
+
+    <%= f.label :dob, 'Date of Birth' %>
+    <%= f.text_area :dob %>
+
+    <%= f.label :mrn, 'Medical Record Number' %>
+    <%= f.text_area :mrn %>
+
+    <%= f.label :email, 'Email' %>
+    <%= f.text_area :email %>
+
+    <%= f.submit %>
+<% end %>
