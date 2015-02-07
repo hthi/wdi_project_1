@@ -30,4 +30,29 @@ RSpec.feature 'Managing patients' do
 
     expect((page).find('h1')).to have_content 'Alexandra Parker'
   end
+
+  scenario 'Update a patient' do
+    patient = Patient.create!(name: 'Alice Chen', dob: '1960-06-22', mrn: '534-98-07', email: 'AC22@gmail.com')
+
+    visit "patients/#{patient.id}/edit"
+
+    fill_in 'Name', with: 'Alice Chen'
+    fill_in 'Date of Birth', with: '1960-06-22'
+    fill_in 'Medical Record Number', with: '534-98-07'
+    fill_in 'Email', with: 'AC22@gmail.com'
+
+    expect(page).to have_content(/success/i)
+    expect((page).find('h1')).to have_content 'Edit Patient Information'
+  end
+
+  scenario 'Delete a patient' do
+    patient = Patient.create!(name: 'Alexandra Parker', dob: '1972-05-18', mrn: '252-37-02', email: 'ally_p@yahoo.com')
+
+    visit "patients/#{patient.id}/edit"
+
+    click_on 'Delete Patient'
+
+    expect(page).to have_content(/success/i)
+  end
+
 end
