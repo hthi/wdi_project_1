@@ -1,5 +1,9 @@
 <h1><%= @patient.name %></h1>
-<%= @patient.dob %>
-<%= @patient.mrn %>
-<%= @patient.email %>
+<ul>
+<li><%= @patient.dob %></li>
+<li><%= @patient.mrn %></li>
+<li><%= @patient.email %></li>
+</ul>
 
+<li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li>
+<li><%= link_to "List of Patients" , patients_path(@patient) %></li>

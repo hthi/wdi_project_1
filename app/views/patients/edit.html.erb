@@ -1,5 +1,13 @@
 <h1>Edit Patient Information</h1>
 
+<ul>
+  <li><%= @patient.name %></li>
+  <li><%= @patient.dob %></li>
+  <li><%= @patient.mrn %></li>
+  <li><%= @patient.email %></li>
+</ul>
+
 <%= render 'form' %>
 
+<%= link_to "List of Patients", patients_path %>
 <%= button_to 'Delete Patient', patient_path(@patient), method: :delete, data: { confirm: 'Are you sure?' } %>
