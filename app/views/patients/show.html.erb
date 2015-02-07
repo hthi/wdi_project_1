@@ -5,5 +5,11 @@
 <li><%= @patient.email %></li>
 </ul>
 
-<li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li>
-<li><%= link_to "List of Patients" , patients_path(@patient) %></li>
+
+Appointments
+<% @appointments.each do |appointment| %>
+  <div></div>
+<% end %>
+
+<%= link_to "Edit Patient information" , edit_patient_path(@patient) %>
+<%= link_to "List of Patients" , patients_path(@patient) %>
