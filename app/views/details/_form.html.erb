@@ -1,0 +1,15 @@
+<%= form_for [@appointment, @appointment.details.build] do |f| %>
+  <p>
+    <%= f.label "Add Assessment" %><br>
+    <%= f.text_field :assessments %>
+
+    <%= f.label "Add Duration" %><br>
+    <%= f.text_field :duration %>
+
+    <%= f.label "Add Additional Notes" %><br>
+    <%= f.text_field :add_notes %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
