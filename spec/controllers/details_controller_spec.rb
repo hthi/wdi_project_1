@@ -51,4 +51,18 @@ RSpec.describe DetailsController do
       end
     end
   end
+
+  describe 'DELETE destroy' do
+    it 'destroys the requested detail' do
+      detail = appointment.details.create!(valid_attributes)
+      expect { delete :destroy,
+        appointment_id: appointment.id, id: detail.id}.to change(Detail, :count).by(-1)
+     end
+
+    it 'redirects to the detail list' do
+       detail = appointment.details.create!(valid_attributes)
+       delete :destroy, appointment_id: appointment.id, id: detail.id
+     expect(response).to redirect_to patient_appointment_path(appointment.patient_id, appointment.id)
+    end
+  end
 end

@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   end
 
   resources :appointments, only: [] do
-    resources :details, only: [:new, :create]
+    resources :details, only: [:new, :create, :destroy]
   end
 end

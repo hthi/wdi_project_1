@@ -59,7 +59,4 @@ RSpec.feature 'Managing Appointments' do
     expect(page).to have_content(/success/i)
   end
 
-
-
-
 end

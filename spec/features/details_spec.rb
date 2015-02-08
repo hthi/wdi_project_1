@@ -14,4 +14,9 @@ RSpec.feature 'Managing Details' do
     expect(page).to have_content 'Details'
   end
 
+  scenario 'Delete a detail' do
+    detail = appointment.details.create!(assessments: 'PE, blood draws', duration: '6 hours', add_notes: 'please arrange for transportation home')
+
+    visit "patients/#{patient.id}/appointments/#{appointment.id}"
+  end
 end

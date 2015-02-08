@@ -1,0 +1,8 @@
+<% unless detail.new_record? %>
+  <p>
+    <%= detail.assessments %> |
+    <%= detail.duration %>
+    <%= detail.add_notes %>
+    <%= button_to 'Delete Detail', appointment_detail_path(@appointment, detail.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+<% end %>
