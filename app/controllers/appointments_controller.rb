@@ -35,8 +35,16 @@ class AppointmentsController < ApplicationController
     else
       render :edit
     end
-
   end
+
+  def destroy
+    @patient = Patient.find(params[:patient_id])
+    @appointment = @patient.appointments.find(params[:id])
+    @appointment.destroy
+    flash[:success] = 'Appointment successfully deleted.'
+    redirect_to patient_path(@patient)
+  end
+
 
   private
   def appointment_params

@@ -52,4 +52,13 @@ RSpec.describe 'routes for appointments' do
     )
   end
 
+   it 'routes DELETE /patients/1/appointments/1 to the patients controller and destroys item' do
+    expect(delete('/patients/1/appointments/1')).to route_to(
+      controller: 'appointments',
+      action: 'destroy',
+      patient_id: '1',
+      id: '1'
+      )
+  end
+
 end

@@ -49,6 +49,15 @@ RSpec.feature 'Managing Appointments' do
     expect(page.find('h1')).to have_content 'Edit Appointment Details'
   end
 
+  scenario 'Delete an appointment' do
+    appointment = patient.appointments.create!(date: '2015-02-25', time: '13:00', provider_name: 'Dr. Flynt')
+
+    visit "patients/#{patient.id}/appointments/#{appointment.id}/edit"
+
+    click_on 'Delete Appointment'
+
+    expect(page).to have_content(/success/i)
+  end
 
 
 

@@ -110,13 +110,43 @@ RSpec.describe AppointmentsController do
         expect(assigns(:appointment)).to eq appointment
       end
 
-      it 'redirects to the appointments' do
+      it 'redirects to the appointment' do
         appointment = patient.appointments.create!(appt_valid_attributes)
         patch :update, patient_id: patient.id, id: appointment.id, appointment: new_attributes
         expect(response).to redirect_to patient_path(patient)
       end
     end
+
+    context 'with invalid attributes' do
+      it 'assigns @appointments' do
+        appointment = patient.appointments.create!(appt_valid_attributes)
+        patch :update, patient_id: patient.id, id: appointment.id, appointment: appt_invalid_attributes
+        expect(assigns(:patient)).to eq patient
+      end
+
+      it 're-renders the edit template' do
+        appointment = patient.appointments.create!(appt_valid_attributes)
+        patch :update, patient_id: patient.id, id: appointment.id, appointment: appt_invalid_attributes
+        expect(response).to render_template('edit')
+      end
+    end
   end
+
+  describe 'DELETE destroy' do
+    it 'destroys the requested appointment' do
+      appointment = patient.appointments.create!(appt_valid_attributes)
+      expect { delete :destroy,
+        patient_id: patient.id, id: appointment.id}.to change(Appointment, :count).by(-1)
+     end
+
+    it 'redirects to the appointment list' do
+       appointment = patient.appointments.create!(appt_valid_attributes)
+       delete :destroy, patient_id: patient.id, id: appointment.id
+     expect(response).to redirect_to patient_path(patient)
+    end
+  end
+
+
 end
 
 

@@ -1,3 +1,5 @@
 <h1>Edit Appointment Details</h1>
 
 <%= render 'form' %>
+
+<%= button_to 'Delete Appointment', patient_appointment_path(@patient, @appointment), method: :delete, data: { confirm: 'Are you sure?' } %>
