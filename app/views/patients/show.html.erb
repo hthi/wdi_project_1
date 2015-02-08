@@ -9,7 +9,9 @@
 Appointments
 <% @appointments.each do |appointment| %>
   <div></div>
+<%= link_to 'Edit Appointment', edit_patient_appointment_path(@patient, appointment) %>
 <% end %>
 
 <%= link_to "Edit Patient information" , edit_patient_path(@patient) %>
 <%= link_to "List of Patients" , patients_path(@patient) %>
+
