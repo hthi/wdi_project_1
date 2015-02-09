@@ -8,10 +8,10 @@
 
 Appointments
 <% @appointments.each do |appointment| %>
-  <div><%= appointment.date %></div>
-  <div><%= appointment.time %></div>
-  <div><%= appointment.provider_name %></div>
+  <div><%= "Date: #{appointment.date}, " %><%= "Time: " + appointment.time %><%= ", Provider: " + appointment.provider_name %></div>
+
 <%= link_to 'Edit Appointment', edit_patient_appointment_path(@patient, appointment) %>
+<%= link_to 'Show Appointment Details', patient_appointment_path(@patient, appointment) %>
 <% end %>
 
 <%= link_to "Edit Patient information" , edit_patient_path(@patient) %>

@@ -1,15 +1,22 @@
 <%= form_for [@appointment, @appointment.details.build] do |f| %>
   <p>
-    <%= f.label "Add Assessment" %><br>
+    <%= f.label "Add Assessment" %>
     <%= f.text_field :assessments %>
+  </p>
 
-    <%= f.label "Add Duration" %><br>
+  <p>
+    <%= f.label "Add Duration" %>
     <%= f.text_field :duration %>
+  </p>
 
-    <%= f.label "Add Additional Notes" %><br>
+  <p>
+    <%= f.label "Add Additional Notes" %>
     <%= f.text_field :add_notes %>
   </p>
+
   <p>
     <%= f.submit %>
   </p>
 <% end %>
+
+<%= link_to 'Back to All Appointments', patient_path(@patient) %>

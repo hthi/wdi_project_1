@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Managing Appointments' do
-  # let(:patient) {
-  #   { name: 'Kevin Smith', dob: '1952-02-12', mrn: '523-66-71', email: 'ksmith@gmail.com' }
-  # }
 
   patient = Patient.create!(name: 'Kevin Smith', dob: '1952-02-12', mrn: '523-66-71', email: 'ksmith@gmail.com')
 
@@ -14,7 +11,7 @@ RSpec.feature 'Managing Appointments' do
 
     visit "/patients/#{patient.id}"
     expect(page).to have_content 'Appointments'
-    #expect(page).to have_selector 'div', count: 3
+    expect(page).to have_selector 'div', count: 3
   end
 
   scenario 'Show an appointment' do

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Managing Details' do
-
   patient = Patient.create!(name: 'Kevin Smith', dob: '1952-02-12', mrn: '523-66-71', email: 'ksmith@gmail.com')
   appointment = patient.appointments.create(date: '2014-12-12', time: '10:00', provider_name: 'Dr. Kim')
 
