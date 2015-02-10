@@ -12,9 +12,11 @@
         <li class="active">
       <ul class="nav nav-sidebar">
 
-        <li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li>
+        <% if can? :new, @patient %>
+        <li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li><% end  %>
+        <% if can? :index, @patient %>
         <li><%= link_to "List of Patients" , patients_path(@patient) %></li>
-
+          <% end  %>
     </div>
 
 <div id="content" class="col-xs-8">
@@ -36,16 +38,19 @@
                   <td><%= detail.duration %></td>
                   <td><%= detail.add_notes %></td>
                   <% unless detail.new_record? %>
-                  <td><%= button_to 'Delete Detail', appointment_detail_path(@appointment, detail.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% if can? :delete, detail %>
+                  <td><%= button_to 'Delete Detail', appointment_detail_path(@appointment, detail.id), method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
                   <% end %></td>
                    </tr>
                   <% end %>
 
               </tbody>
             </table>
+            <% if can? :new, @detail %>
             <div id=""
             <%= render 'details/form' %>
             </div>
+            <% end %>
           </div>
         </div>
       </div>

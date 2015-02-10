@@ -1,17 +1,17 @@
 <%= form_for [@patient, @appointment] do |f| %>
   <p>
     <%= f.label :date, 'Date' %>
-    <%= f.text_field :date %>
+    <%= f.text_field :date, :placeholder => "YYYY-MM-DD" %>
   </p>
 
   <p>
     <%= f.label :time, 'Time' %>
-    <%= f.text_field :time %>
+    <%= f.text_field :time, :placeholder => "24 hour time" %>
   </p>
 
   <p>
     <%= f.label :provider_name, 'Provider' %>
-    <%= f.text_field :provider_name %>
+    <%= f.text_field :provider_name, :placeholder => "i.e. Johnson, NP" %>
   </p>
 
   <p>

@@ -12,12 +12,12 @@
       <ul class="nav nav-sidebar">
         <li class="active">
       <ul class="nav nav-sidebar">
+        <% if can? :edit, @patient %>
         <li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li>
+        <% end %>
+         <% if can? :index, @patient %>
         <li><%= link_to "List of Patients" , patients_path(@patient) %></li>
-         <form class="Search">
-        <input type="text" class="form-control" placeholder="Search...">
-        <button class "btn">Search</button>
-      </form>
+        <% end %>
     </div>
 
 <div id="content" class="col-xs-8">
@@ -38,12 +38,19 @@
                   <td><%= appointment.time %></td>
                   <td><%= appointment.provider_name %></td>
                   <td><%= link_to 'Show Appointment Details', patient_appointment_path(@patient, appointment) %></td>
+                   <% if can? :edit, @appointment %>
                   <td><%= link_to 'Edit Appointment', edit_patient_appointment_path(@patient, appointment) %></td>
+                  <% end %>
                    </tr>
                   <% end %>
               </tbody>
             </table>
+                <% if @appointments.count == 0 %>
+                <%= "There are no scheduled appointments" %>
+                <% end %><br>
+             <% if can? :new, @appointment %>
             <%= link_to "New Appointment" , new_patient_appointment_path(@patient) %>
+            <% end %>
             </div>
           </div>
         </div>
