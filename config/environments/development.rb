@@ -39,7 +39,10 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  #url option for development
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  #url option for production
   config.action_mailer.default_url_options = { host: 'floating-ocean-1981.herokuapp.com' }
 
 end
