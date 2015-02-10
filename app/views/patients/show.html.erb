@@ -1,19 +1,57 @@
-<h1><%= @patient.name %></h1>
-<ul>
-<li><%= @patient.dob %></li>
-<li><%= @patient.mrn %></li>
-<li><%= @patient.email %></li>
-</ul>
+  <div id="sidebar" class="col-xs-3">
 
 
-Appointments
-<% @appointments.each do |appointment| %>
-  <div><%= "Date: #{appointment.date}, " %><%= "Time: " + appointment.time %><%= ", Provider: " + appointment.provider_name %></div>
+  <h1><%= @patient.name %></h1>
+  <div class='patient_info'>
+  <ul>
+  <li><%= @patient.dob %></li>
+  <li><%= @patient.mrn %></li>
+  <li><%= @patient.email %></li>
+  </ul>
+  </div>
+      <ul class="nav nav-sidebar">
+        <li class="active">
+      <ul class="nav nav-sidebar">
+        <li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li>
+        <li><%= link_to "List of Patients" , patients_path(@patient) %></li>
+         <form class="Search">
+        <input type="text" class="form-control" placeholder="Search...">
+        <button class "btn">Search</button>
+      </form>
+    </div>
 
-<%= link_to 'Edit Appointment', edit_patient_appointment_path(@patient, appointment) %>
-<%= link_to 'Show Appointment Details', patient_appointment_path(@patient, appointment) %>
-<% end %>
+<div id="content" class="col-xs-8">
+<h2 class="sub-header">Appointments</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Provider Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @appointments.each do |appointment| %>
+                <tr>
+                  <td><%= appointment.date %></td>
+                  <td><%= appointment.time %></td>
+                  <td><%= appointment.provider_name %></td>
+                  <td><%= link_to 'Show Appointment Details', patient_appointment_path(@patient, appointment) %></td>
+                  <td><%= link_to 'Edit Appointment', edit_patient_appointment_path(@patient, appointment) %></td>
+                   </tr>
+                  <% end %>
+              </tbody>
+            </table>
+            <%= link_to "New Appointment" , new_patient_appointment_path(@patient) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<%= link_to "Edit Patient information" , edit_patient_path(@patient) %>
-<%= link_to "List of Patients" , patients_path(@patient) %>
-<%= link_to "New Appointment" , new_patient_appointment_path(@patient) %>
+    <div id="footer" class= "col-xs-12">
+    <p>Created by Helen Thi | WDI 2015</p>
+    </div>
+
+

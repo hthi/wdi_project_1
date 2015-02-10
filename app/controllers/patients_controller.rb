@@ -1,7 +1,9 @@
 class PatientsController < ApplicationController
   def index
     @patients = Patient.all
-  end
+    @patients = Patient.search(params[:search])
+end
+
 
   def new
     @patient = Patient.new
@@ -18,7 +20,7 @@ class PatientsController < ApplicationController
 
     if @patient.save
       flash[:success] = 'Patient was successfully created'
-      redirect_to patient_path(@patient)
+      redirect_to patients_path
     else
       render :new
     end
@@ -46,7 +48,7 @@ class PatientsController < ApplicationController
     redirect_to patients_path
   end
 
-
+  private
   def patient_params
     params.require(:patient).permit(:name, :dob, :mrn, :email)
   end

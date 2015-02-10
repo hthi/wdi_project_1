@@ -1,15 +1,26 @@
 <%= form_for @patient do |f| %>
-    <%= f.label :name, 'Name' %>
-    <%= f.text_field :name %>
+<p>
+    <%= f.label :name, 'Name' %><br>
+    <%= f.text_field :name, :placeholder => "Last Name, First Name" %>
+</p>
 
-    <%= f.label :dob, 'Date of Birth' %>
-    <%= f.text_area :dob %>
+<p>
+    <%= f.label :dob, 'Date of Birth' %><br>
+    <%= f.text_field :dob, :placeholder => "YYYY-MM-DD" %>
+</p>
 
-    <%= f.label :mrn, 'Medical Record Number' %>
-    <%= f.text_area :mrn %>
+<p>
+    <%= f.label :mrn, 'Medical Record Number' %><br>
+    <%= f.text_field :mrn, :placeholder => "XXX-XX-XX" %>
+</p>
 
-    <%= f.label :email, 'Email' %>
-    <%= f.text_area :email %>
+<p>
+    <%= f.label :email, 'Email' %><br>
+    <%= f.text_field :email, :placeholder => "i.e. username@email.com" %>
+</p>
 
-    <%= f.submit %>
+<p>
+    <%= f.submit  %>
 <% end %>
+</p>
+

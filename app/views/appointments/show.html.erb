@@ -1,9 +1,62 @@
-<h1>Appointment on <%= @appointment.date %></h1>
+<div id="sidebar" class="col-xs-3">
+  <h1><%= @appointment.patient.name %></h1>
 
-Details
+  <div class='patient_info'>
+  <ul>
+  <li><%= "Date of Birth: #{@appointment.patient.dob}" %></li>
+  <li><%= "Medical Record Number: " + @appointment.patient.mrn %></li>
+  <li><%= "Email Address: " + @appointment.patient.email %></li>
+  </ul>
+  </div>
+      <ul class="nav nav-sidebar">
+        <li class="active">
+      <ul class="nav nav-sidebar">
 
-<%= render @appointment.details %>
-<%= render 'details/form' %>
+        <li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li>
+        <li><%= link_to "List of Patients" , patients_path(@patient) %></li>
+
+    </div>
+
+<div id="content" class="col-xs-8">
+  <h1>Appointment on <%= @appointment.date %></h1>
+    <h2 class="sub-header">Details</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Assessments</th>
+                  <th>Approx. Duration</th>
+                  <th>Additional Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @details.each do |detail| %>
+                <tr>
+                  <td><%= detail.assessments %></td>
+                  <td><%= detail.duration %></td>
+                  <td><%= detail.add_notes %></td>
+                  <% unless detail.new_record? %>
+                  <td><%= button_to 'Delete Detail', appointment_detail_path(@appointment, detail.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <% end %></td>
+                   </tr>
+                  <% end %>
+
+              </tbody>
+            </table>
+            <div id=""
+            <%= render 'details/form' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
 
 
 

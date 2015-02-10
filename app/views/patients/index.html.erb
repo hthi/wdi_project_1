@@ -1,9 +1,59 @@
-<h1>Patients</h1>
+<div id="sidebar" class="col-xs-3">
+  <ul class="nav nav-sidebar">
+    <li class="active">
+    <ul class="nav nav-sidebar">
+    <br>
+    <li><%= link_to "Create New Patient",
+    new_patient_path %></li>
 
-<ul>
-  <% @patients.each do |patient| %>
-  <li><%= link_to patient.name, patient_path(patient.id) %></li>
-</ul>
+    <li>
+    <%= link_to 'Create a new company',
+         new_patient_path,
+        :onclick=>"window.open(this.href,'create_company', 'height=600, width=600');return false;"
+
+
+         %>
+    </li>
+
+    <%= form_tag patients_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
 <% end %>
+</div>
 
-<%= link_to "Create New Patient", new_patient_path %>
+
+<div id="content" class="col-xs-8">
+  <h2 class="sub-header">Listing All Patients</h2>
+      <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Date Of Birth</th>
+                <th>Medical Record Number</th>
+                <th>Email Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @patients.each do |patient| %>
+              <tr>
+                <td><%= patient.name %></td>
+                <td><%= patient.dob %></td>
+                <td><%= patient.mrn %></td>
+                <td><%= patient.email %></td>
+                <td><%= link_to "Scheduled Appointments", patient_path(patient.id) %></td>
+              </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footer" class= "col-xs-12">
+  <p>Created by Helen Thi | WDI 2015</p>
+</div>

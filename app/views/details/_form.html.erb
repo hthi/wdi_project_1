@@ -1,17 +1,19 @@
+
+<h1> Add a New Detail </h1>
 <%= form_for [@appointment, @appointment.details.build] do |f| %>
   <p>
-    <%= f.label "Add Assessment" %>
-    <%= f.text_field :assessments %>
+    <%= f.label "Assessment" %><br>
+    <%= f.text_field :assessments, :placeholder => "i.e. PE, Vitals, ECGs..." %>
   </p>
 
   <p>
-    <%= f.label "Add Duration" %>
-    <%= f.text_field :duration %>
+    <%= f.label "Duration" %><br>
+    <%= f.text_field :duration, :placeholder => "i.e. 5.5hrs"  %>
   </p>
 
   <p>
-    <%= f.label "Add Additional Notes" %>
-    <%= f.text_field :add_notes %>
+    <%= f.label "Additional Notes" %><br>
+    <%= f.text_field :add_notes, :placeholder => "i.e. fasting" %>
   </p>
 
   <p>
