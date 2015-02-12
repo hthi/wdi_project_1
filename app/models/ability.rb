@@ -1,7 +1,7 @@
 class Ability
   include CanCan::Ability
   def initialize(user)
-    if not user.nil? && user.admin?
+    if user.admin?
         can :manage, :all
     else
        can :show, Patient

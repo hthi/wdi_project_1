@@ -42,9 +42,11 @@
                   <% end %></td>
                    </tr>
                   <% end %>
-
               </tbody>
             </table>
+            <% if @details.count == 0 %>
+                <%= "Please contact admin for more details of appointment" %>
+                <% end %><br>
             <% if can? :new, @detail %>
             <div id="details_form">
             <%= render 'details/form' %>
