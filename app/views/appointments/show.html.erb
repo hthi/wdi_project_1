@@ -50,8 +50,8 @@
             <% if can? :new, @detail %>
             <div id="details_form">
             <%= render 'details/form' %>
-            <% end %>
-
+            <% end %><br>
+            <%= link_to "Back to All Appointments" , patient_path(@patient) %>
           </div>
         </div>
       </div>

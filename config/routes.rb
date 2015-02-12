@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
   root 'home#index'
+
+  #search bar
   resources :keywords do
   collection do
     get 'search'

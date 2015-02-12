@@ -1,5 +1,7 @@
-<h2 class="form_title">Edit Appointment Details</h2>
+<div class ="form_content"><h2 class="form_title">Edit Appointment Details</h2></div>
 
 <%= render 'form' %>
 
-<%= button_to 'Delete Appointment', patient_appointment_path(@patient, @appointment), method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="form_content"><%= button_to 'Delete Appointment', patient_appointment_path(@patient, @appointment), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= link_to "Back to All Appointments", patient_path(@patient) %></div>

@@ -34,8 +34,18 @@ body {
   font-size: 15px;
 }
 
-.field label, .form_title, .hint, .notice, .user_status, .form, .edit_patient, .patient_details {
+.field label, .form_title, .hint, .notice, .form, .edit_patient, .patient_details {
   color: white;
+}
+
+.user_status {
+  color: white;
+  margin-top: 20px;
+}
+
+.nav_link {
+  margin-top: 5px;
+  text-align: right
 }
 
 .button {
@@ -43,10 +53,15 @@ body {
 }
 #navbar-name {
   color: white;
+  font-style: italic;
 }
 
 input {
   color: black;
+}
+
+.form_content {
+text-align: center;
 }
 
 footer {
@@ -54,5 +69,6 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+  clear: both;
 }
 

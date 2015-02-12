@@ -18,8 +18,8 @@
         <ul class="nav navbar-nav navbar-right"><li>
         <form>
           <% if user_signed_in? %>
-          <div class="user_status">Welcome, <%= current_user.email %>
-         <%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+          <div class="user_status">Welcome, <%= current_user.email %><br></div>
+         <div class="nav_link"><%= link_to "Log out", destroy_user_session_path, method: :delete %></div></li>
           <% end %><div>
 
         </form>

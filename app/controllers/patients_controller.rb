@@ -3,6 +3,8 @@ class PatientsController < ApplicationController
 
   def index
     @patients = Patient.all
+
+    #find patients with entered params
     @patients = Patient.search(params[:search])
   end
 
