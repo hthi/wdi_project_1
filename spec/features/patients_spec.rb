@@ -1,9 +1,17 @@
 require 'rails_helper'
 
-
 RSpec.feature 'Managing patients' do
+
+  before(:each) do
+    User.create!(email: 'testemail@email.com', password: 'fakepassword')
+
+    visit '/users/sign_in'
+    fill_in 'Email', with: 'testemail@email.com'
+    fill_in 'Password', with: 'fakepassword'
+
+    click_on 'Log in'
+  end
   scenario 'List all patients' do
-  Patient.destroy_all
   Patient.create!(name: 'Kevin Smith', dob: '1952-02-12', mrn: '523-66-71', email: 'ksmith@gmail.com')
   Patient.create!(name: 'Alexandra Parker', dob: '1972-05-18', mrn: '252-37-02', email: 'ally_p@yahoo.com')
   Patient.create!(name: 'Alice Chen', dob: '1960-06-22', mrn: '534-98-07', email: 'AC22@gmail.com')
@@ -11,7 +19,7 @@ RSpec.feature 'Managing patients' do
     visit '/patients'
 
     expect(page).to have_content 'Patients'
-    expect(page).to have_selector 'li', count: 3
+    expect(page).to have_selector 'tr.patient', count: 3
   end
 
   scenario 'Create a patient' do
@@ -30,7 +38,7 @@ RSpec.feature 'Managing patients' do
 
     visit "/patients/#{patient.id}"
 
-    expect((page).find('h1')).to have_content 'Alexandra Parker'
+    expect((page).find('h2.patient')).to have_content 'Alexandra Parker'
   end
 
   scenario 'Update a patient' do
@@ -44,7 +52,7 @@ RSpec.feature 'Managing patients' do
     fill_in 'Email', with: 'AC22@gmail.com'
 
     expect(page).to have_content(/success/i)
-    expect((page).find('h1')).to have_content 'Edit Patient Information'
+    expect((page).find('h1.edit_patient')).to have_content 'Edit Patient Information'
   end
 
   scenario 'Delete a patient' do

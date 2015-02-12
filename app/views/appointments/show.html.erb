@@ -1,27 +1,26 @@
 <div id="sidebar" class="col-xs-3">
-  <h1><%= @appointment.patient.name %></h1>
-
+  <h2><%= @appointment.patient.name %></h2>
   <div class='patient_info'>
   <ul>
-  <li><%= "Date of Birth: #{@appointment.patient.dob}" %></li>
-  <li><%= "Medical Record Number: " + @appointment.patient.mrn %></li>
-  <li><%= "Email Address: " + @appointment.patient.email %></li>
+    <li><%= "DOB: #{@appointment.patient.dob}" %></li>
+    <li><%= "MRN: " + @appointment.patient.mrn %></li>
+    <li><%= "Email: " + @appointment.patient.email %></li>
   </ul>
   </div>
-      <ul class="nav nav-sidebar">
-        <li class="active">
-      <ul class="nav nav-sidebar">
-
-        <% if can? :new, @patient %>
-        <li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li><% end  %>
+    <ul class="nav nav-sidebar">
+    <li class="active">
+    <ul class="nav nav-sidebar">
+    <br>
+      <% if can? :new, @patient %>
+      <li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li><% end  %>
         <% if can? :index, @patient %>
-        <li><%= link_to "List of Patients" , patients_path(@patient) %></li>
+      <li><%= link_to "List of Patients" , patients_path(@patient) %></li>
           <% end  %>
     </div>
 
-<div id="content" class="col-xs-8">
-  <h1>Appointment on <%= @appointment.date %></h1>
-    <h2 class="sub-header">Details</h2>
+<div id="content" class="col-xs-8 col-xs-offset-1">
+  <h2 class='appt'>Appointment on <%= @appointment.date %></h2>
+    <h3 class="details">Details</h3>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -47,10 +46,10 @@
               </tbody>
             </table>
             <% if can? :new, @detail %>
-            <div id=""
+            <div id="details_form">
             <%= render 'details/form' %>
-            </div>
             <% end %>
+
           </div>
         </div>
       </div>

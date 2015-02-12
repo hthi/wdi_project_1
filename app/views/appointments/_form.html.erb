@@ -1,20 +1,28 @@
 <%= form_for [@patient, @appointment] do |f| %>
   <p>
-    <%= f.label :date, 'Date' %>
+    <div class="field">
+    <%= f.label :date, 'Date' %><br>
     <%= f.text_field :date, :placeholder => "YYYY-MM-DD" %>
+    </div>
   </p>
 
   <p>
-    <%= f.label :time, 'Time' %>
+    <div class="field">
+    <%= f.label :time, 'Time' %><br>
     <%= f.text_field :time, :placeholder => "24 hour time" %>
+    </div>
   </p>
 
   <p>
-    <%= f.label :provider_name, 'Provider' %>
+     <div class="field">
+    <%= f.label :provider_name, 'Provider' %><br>
     <%= f.text_field :provider_name, :placeholder => "i.e. Johnson, NP" %>
+    </div>
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit class: 'button'%>
+  <% end %>
   </p>
- <% end %>
+
+

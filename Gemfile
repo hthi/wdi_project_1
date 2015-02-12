@@ -25,6 +25,7 @@ gem 'rack-cors'
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'nokogiri'
 group :development, :test do
+  gem 'database_cleaner'
   gem 'capybara'
   gem 'rubocop'
   gem 'bullet'

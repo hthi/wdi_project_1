@@ -1,48 +1,58 @@
-html {
-  height: 100%;
-  color: red;
+.navbar {
+  background-color: #3AA8B0;
+  margin: 0;
+  height: 70px;
+  border-radius: 0px;
 }
 
-.navbar {
-  background-color: black;
-  margin: 0;
+.navbar-brand {
+  font-color: white;
 }
 
 body {
-  background-color: gray;
+  background-color: #0B2B3B;
   height: 100%
 }
 
-.col-xs-3 {
+#sidebar {
     border: 2px solid;
     border-radius: 30px;
-    min-height: 80%;
-    margin-top: 20px;
-    margin-left: 60px;
-    position: static;
-    left:0; top:92px; bottom: 0;
+    height: 550px;
+    top:30px;
     background-color: white;
 }
 
-.col-xs-8 {
+#content {
     border: 2px solid;
     border-radius: 30px;
-    min-height: 80%;
-    float: right;
-    position: static;
-    margin-top: 20px;
-    margin-right: 20px;
-    align-right:0; top:92px; bottom: 0;
+    height: 550px;
+    top: 30px;
     background-color: white;
 }
 
 .patient_info {
-  font-size: 17px !important;
+  font-size: 15px;
 }
 
-.links {
+.field label, .form_title, .hint, .notice, .user_status, .form, .edit_patient, .patient_details {
+  color: white;
+}
+
+.button {
+  color: black;
+}
+#navbar-name {
+  color: white;
+}
+
+input {
+  color: black;
 }
 
 footer {
-  clear: both;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
+

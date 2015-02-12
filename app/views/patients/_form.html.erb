@@ -1,28 +1,35 @@
 <%= form_for @patient do |f| %>
 <p>
+    <div class="field">
     <%= f.label :name, 'Name' %><br>
     <%= f.text_field :name, :placeholder => "Last Name, First Name" %>
+    </div>
 </p>
 
 <p>
+    <div class="field">
     <%= f.label :dob, 'Date of Birth' %><br>
     <%= f.text_field :dob, :placeholder => "YYYY-MM-DD" %>
+    </div>
 </p>
 
 <p>
+    <div class="field">
     <%= f.label :mrn, 'Medical Record Number' %><br>
     <%= f.text_field :mrn, :placeholder => "XXX-XX-XX" %>
+    </div>
 </p>
 
 <p>
+    <div class="field">
     <%= f.label :email, 'Email' %><br>
     <%= f.text_field :email, :placeholder => "i.e. username@email.com" %>
+    </div>
 </p>
 
 <p>
-    <%= f.submit %>
-    <!-- "Submit", :onclick => "window.close()" -->
-
+    <%= f.submit class: 'button'%>
 <% end %>
 </p>
+
 

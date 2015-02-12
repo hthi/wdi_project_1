@@ -1,13 +1,12 @@
 class AppointmentsController < ApplicationController
+  before_action :set_appt, only: [:show, :edit, :update, :destroy]
+
   def new
     @patient = Patient.find(params[:patient_id])
     @appointment = @patient.appointments.new
-    flash[:success] = 'Appointment succesfully created.'
   end
 
   def show
-    @patient = Patient.find(params[:patient_id])
-    @appointment = @patient.appointments.find(params[:id])
     @details = @appointment.details
     @detail = @appointment.details.new
   end
@@ -23,15 +22,9 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    @patient = Patient.find(params[:patient_id])
-    @appointment = @patient.appointments.find(params[:id])
-    flash[:success] = 'Patient info successfully updated'
   end
 
   def update
-    @patient = Patient.find(params[:patient_id])
-    @appointment = @patient.appointments.find(params[:id])
-
     if @appointment.update_attributes(appointment_params)
       redirect_to patient_path(@patient), :flash => { :success => "Appointment successfully created" }
     else
@@ -40,15 +33,17 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    @patient = Patient.find(params[:patient_id])
-    @appointment = @patient.appointments.find(params[:id])
     @appointment.destroy
     flash[:success] = 'Appointment successfully deleted.'
     redirect_to patient_path(@patient)
   end
 
-
   private
+  def set_appt
+    @patient = Patient.find(params[:patient_id])
+    @appointment = @patient.appointments.find(params[:id])
+  end
+
   def appointment_params
     params.require(:appointment).permit(:date, :time, :provider_name)
   end
