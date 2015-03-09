@@ -16,3 +16,20 @@ This is an app that will allow patients on clinical trials to see what appointme
 - As a coordinator, I want to edit an assessment.
 - As a coordinator, I can add a patient.
 
+##Login Credentials:
+The page is currently hosted on Heroku:
+(https://clinical-app.herokuapp.com/)
+
+This app has implemented authentication (using Devise) and authorization rights(using CanCan).
+
+Upon going to the page, you will be prompted to enter valid user credentials. If you would like to visit the page, please use the following account set-up for with admin rights:
+
+Email: admin@user.com
+Password: tester123
+
+
+
+
+
+
+
