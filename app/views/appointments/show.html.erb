@@ -1,61 +1,61 @@
 <div id="sidebar" class="col-xs-3">
-  <h2><%= @appointment.patient.name %></h2>
+<h2><%= @appointment.patient.name %></h2>
   <div class='patient_info'>
-  <ul>
-    <li><%= "DOB: #{@appointment.patient.dob}" %></li>
-    <li><%= "MRN: " + @appointment.patient.mrn %></li>
-    <li><%= "Email: " + @appointment.patient.email %></li>
-  </ul>
+    <ul>
+      <li><%= "DOB: #{@appointment.patient.dob}" %></li>
+      <li><%= "MRN: " + @appointment.patient.mrn %></li>
+      <li><%= "Email: " + @appointment.patient.email %></li>
+    </ul>
   </div>
-    <ul class="nav nav-sidebar">
-    <li class="active">
-    <ul class="nav nav-sidebar">
-    <br>
-      <% if can? :new, @patient %>
-      <li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li><% end  %>
-        <% if can? :index, @patient %>
-      <li><%= link_to "List of Patients" , patients_path(@patient) %></li>
-          <% end  %>
-    </div>
+  <ul class="nav nav-sidebar">
+  <li class="active">
+  <ul class="nav nav-sidebar">
+  <br>
+  <% if can? :new, @patient %>
+    <li><%= link_to "Edit Patient information" , edit_patient_path(@patient) %></li><% end  %>
+    <% if can? :index, @patient %>
+    <li><%= link_to "List of Patients" , patients_path(@patient) %></li>
+  <% end  %>
+</div>
 
 <div id="content" class="col-xs-8 col-xs-offset-1">
-  <h2 class='appt'>Appointment on <%= @appointment.date %></h2>
-    <h3 class="details">Details</h3>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Assessments</th>
-                  <th>Approx. Duration</th>
-                  <th>Additional Notes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @details.each do |detail| %>
-                <tr>
-                  <td><%= detail.assessments %></td>
-                  <td><%= detail.duration %></td>
-                  <td><%= detail.add_notes %></td>
-                  <% unless detail.new_record? %>
-                  <% if can? :delete, detail %>
-                  <td><%= button_to 'Delete Detail', appointment_detail_path(@appointment, detail.id), method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
-                  <% end %></td>
-                   </tr>
-                  <% end %>
-              </tbody>
-            </table>
-            <% if @details.count == 0 %>
-                <%= "Please contact admin for more details of appointment" %>
-                <% end %><br>
-            <% if can? :new, @detail %>
-            <div id="details_form">
-            <%= render 'details/form' %>
-            <% end %><br>
-            <%= link_to "Back to All Appointments" , patient_path(@patient) %>
-          </div>
-        </div>
+<h2 class='appt'>Appointment on <%= @appointment.date %></h2>
+<h3 class="details">Details</h3>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Assessments</th>
+          <th>Approx. Duration</th>
+          <th>Additional Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @details.each do |detail| %>
+          <tr>
+            <td><%= detail.assessments %></td>
+            <td><%= detail.duration %></td>
+            <td><%= detail.add_notes %></td>
+            <% unless detail.new_record? %>
+            <% if can? :delete, detail %>
+            <td><%= button_to 'Delete Detail', appointment_detail_path(@appointment, detail.id), method: :delete, data: { confirm: 'Are you sure?' } %><% end %>
+            <% end %></td>
+             </tr>
+            <% end %>
+      </tbody>
+    </table>
+    <% if @details.count == 0 %>
+      <%= "Please contact admin for more details of appointment" %>
+    <% end %><br>
+    <% if can? :new, @detail %>
+      <div id="details_form">
+      <%= render 'details/form' %>
+       <% end %><br>
+      <%= link_to "Back to All Appointments" , patient_path(@patient) %>
       </div>
     </div>
+  </div>
+</div>
 
 
 
